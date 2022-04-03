@@ -1,20 +1,15 @@
-let list_of_n n = 
-    let rec go n l = match n with
-    | 0 -> l
-    | n -> go (n - 1) (n :: l)
-in
-go n []
-
-let sum_of_list = List.fold_left (+) 0
-
-let square x = x * x
-
 let compose f g = fun x -> f x |> g
 let (>>) = compose
 
-let square_of_sum x = 
-    list_of_n x |> sum_of_list |> square
-let sum_of_squares n = list_of_n n |> List.map square |> sum_of_list
+let square x = x * x
+
+(* Sum of an arithmetic series, e.g. https://courses.lumenlearning.com/ivytech-collegealgebra/chapter/using-the-formula-for-arithmetic-series/ *)
+let sum_n n = n * (1 + n) / 2
+
+let square_of_sum = sum_n >> square
+
+(* https://en.wikipedia.org/wiki/Square_pyramidal_number#Formula *)
+let sum_of_squares n = n * (n + 1) * (2 * n + 1) / 6
 
 let difference_of_squares n =
     let square_of_sum = square_of_sum n in
