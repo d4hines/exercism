@@ -26,6 +26,7 @@ rec {
     ];
 
     propagatedBuildInputs = [
+      qcheck
       base
       ounit
       piaf
